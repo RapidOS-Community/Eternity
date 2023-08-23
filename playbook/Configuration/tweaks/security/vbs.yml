@@ -1,0 +1,10 @@
+---
+title: vbs
+description: vbs
+privilege: TrustedInstaller
+actions:
+   # Enable VBS
+ - !run: {exe: 'bcdedit', args: '/set hypervisorlaunchtype on', option: "enable-vbs"}
+
+   # Disable VBS
+ - !run: {exe: 'bcdedit', args: '/set hypervisorlaunchtype off', option: "disable-vbs"}

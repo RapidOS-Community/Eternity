@@ -1,0 +1,15 @@
+---
+title: update-health
+description: update-health
+privilege: TrustedInstaller
+actions:
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\UpdateHealthTools'}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\rempl'}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\CloudManagedUpdate'}
+
+ - !run: {exeDir: true, exe: 'UPDHEALTH.bat', weight: 20}
+
+ - !file: {path: 'C:\Program Files\Microsoft Update Health Tools'}
+
+ - !file:
+   path: 'C:\Program Files\PCHealthCheck'

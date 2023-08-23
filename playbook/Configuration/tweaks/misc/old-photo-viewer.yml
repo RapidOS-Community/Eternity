@@ -1,0 +1,28 @@
+---
+title: old-photo-viewer
+description: old-photo-viewer
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.tif', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.tiff', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.bmp', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.dib', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.gif', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.jfif', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.jpe', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.jpeg', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.jpg', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.jxr', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations', value: '.png', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+  
+ - !registryValue: {path: 'HKCU\Software\Classes\.tif', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.tiff', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.bmp', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.dib', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.gif', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.jfif', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.jpe', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.jpeg', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.jpg', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.jxr', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}
+ - !registryValue: {path: 'HKCU\Software\Classes\.png', value: '', type: REG_SZ, data: 'PhotoViewer.FileAssoc.Tiff'}

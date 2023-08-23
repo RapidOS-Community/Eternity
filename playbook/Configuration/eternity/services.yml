@@ -1,0 +1,117 @@
+---
+title: services
+description: services
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: "Configuring services"}
+ - !service: {name: 'ALG', operation: change, startup: 4}
+ - !service: {name: 'AppMgmt', operation: change, startup: 4}
+ - !service: {name: 'AppReadiness', operation: change, startup: 4}
+ - !service: {name: 'autotimesvc', operation: change, startup: 4}
+ - !service: {name: 'AxInstSV', operation: change, startup: 4}
+ - !service: {name: 'bam', operation: change, startup: 4} 
+ - !service: {name: 'Beep', operation: change, startup: 4} 
+ - !service: {name: 'BluetoothUserService', operation: change, startup: 4}
+ - !service: {name: 'BTAGService', operation: change, startup: 4}
+ - !service: {name: 'CertPropSvc', operation: change, startup: 4}
+ - !service: {name: "DoSvc", operation: change, startup: 3}
+ - !service: {name: "DusmSvc", operation: change, startup: 4}
+ - !service: {name: "DevQueryBroker", operation: change, startup: 4}
+ - !service: {name: 'DPS', operation: change, startup: 4} 
+ - !service: {name: 'embeddedmode', operation: change, startup: 4} 
+ - !service: {name: 'EntAppSvc', operation: change, startup: 4} 
+ - !service: {name: 'fdPHost', operation: change, startup: 4}
+ - !service: {name: 'FDResPub', operation: change, startup: 4}
+ - !service: {name: 'fhsvc', operation: change, startup: 4}
+ - !service: {name: 'FontCache', operation: change, startup: 4}
+ - !service: {name: 'FontCache3.0.0.0', operation: change, startup: 4}
+ - !service: {name: 'GraphicsPerfSvc', operation: change, startup: 4} 
+ - !service: {name: 'GpuEnergyDrv', operation: change, startup: 4} 
+ - !service: {name: 'IpxlatCfgSvc', operation: change, startup: 4}
+ - !service: {name: 'irmon', operation: change, startup: 4} 
+ - !service: {name: 'LanmanServer', operation: change, startup: 3}
+ - !service: {name: 'lmhosts', operation: change, startup: 3}
+ - !service: {name: 'MapsBroker', operation: change, startup: 4}
+ - !service: {name: 'McpManagementService', operation: change, startup: 4}
+ - !service: {name: 'MixedRealityOpenXRSvc', operation: change, startup: 4}
+ - !service: {name: "MessagingService", operation: change, startup: 4}
+ - !service: {name: 'MSDTC', operation: change, startup: 4}
+ - !service: {name: 'NcaSvc', operation: change, startup: 4}
+ - !service: {name: 'Ndu', operation: change, startup: 4} 
+ - !service: {name: 'NetBT', operation: change, startup: 4} 
+ - !service: {name: 'NvTelemetryContainer', operation: change, startup: 4}
+ - !service: {name: 'OneSyncSvc', operation: change, startup: 4}
+ - !service: {name: 'PcaSvc', operation: change, startup: 4}
+ - !service: {name: 'PenService', operation: change, startup: 4}
+ - !service: {name: 'perceptionsimulation', operation: change, startup: 4}
+ - !service: {name: 'PhoneSvc', operation: change, startup: 4}
+ - !service: {name: 'PimIndexMaintenanceSvc', operation: change, startup: 4}
+ - !service: {name: 'pla', operation: change, startup: 4}
+ - !service: {name: 'PNRPAutoReg', operation: change, startup: 4}
+ - !service: {name: 'PNRPsvc', operation: change, startup: 4}
+ - !service: {name: 'PrintWorkflowUserSvc', operation: change, startup: 4}
+ - !service: {name: 'P9RdrService', operation: change, startup: 4}
+ - !service: {name: 'p2psvc', operation: change, startup: 4}
+ - !service: {name: 'p2pimsvc', operation: change, startup: 4}
+ - !service: {name: 'QWAVE', operation: change, startup: 4}
+ - !service: {name: 'RasAuto', operation: change, startup: 4}
+ - !service: {name: 'RasMan', operation: change, startup: 4}
+ - !service: {name: 'RemoteRegistry', operation: change, startup: 4}
+ - !service: {name: 'RetailDemo', operation: change, startup: 4}
+ - !service: {name: 'RpcLocator', operation: change, startup: 4}
+ - !service: {name: 'RpcLocator', operation: change, startup: 4}
+ - !service: {name: 'SCardSvr', operation: change, startup: 4}
+ - !service: {name: 'ScDeviceEnum', operation: change, startup: 4}
+ - !service: {name: 'SCPolicySvc', operation: change, startup: 4}
+ - !service: {name: 'SEMgrSvc', operation: change, startup: 4}
+ - !service: {name: 'SharedAccess', operation: change, startup: 4}
+ - !service: {name: 'SharedRealitySvc', operation: change, startup: 4}
+ - !service: {name: 'ShellHWDetection', operation: change, startup: 4}
+ - !service: {name: 'SensorDataService', operation: change, startup: 4}
+ - !service: {name: 'SensorService', operation: change, startup: 4}
+ - !service: {name: 'SensrSvc', operation: change, startup: 4}
+ - !service: {name: 'SessionEnv', operation: change, startup: 4}
+ - !service: {name: 'spectrum', operation: change, startup: 4}
+ - !service: {name: 'SmsRouter', operation: change, startup: 4}
+ - !service: {name: 'SNMPTRAP', operation: change, startup: 4}
+ - !service: {name: 'sppsvc', operation: change, startup: 3}
+ - !service: {name: 'SSDPSRV', operation: change, startup: 4}
+ - !service: {name: 'Telemetry', operation: change, startup: 4}
+ - !service: {name: 'TrkWks', operation: change, startup: 4}
+ - !service: {name: 'UdkUserSvc', operation: change, startup: 4}
+ - !service: {name: 'UmRdpService', operation: change, startup: 4}
+ - !service: {name: 'VacSvc', operation: change, startup: 4}
+ - !service: {name: 'WalletService', operation: change, startup: 4}
+ - !service: {name: 'WdiServiceHost', operation: change, startup: 4} 
+ - !service: {name: 'WdiSystemHost', operation: change, startup: 4} 
+ - !service: {name: 'wercplsupport', operation: change, startup: 4} 
+ - !service: {name: 'WEPHOSTSVC', operation: change, startup: 4}
+ - !service: {name: 'Wecsvc', operation: change, startup: 4}
+ - !service: {name: 'wercplsupport', operation: change, startup: 4}
+ - !service: {name: 'WerSvc', operation: change, startup: 4} 
+ - !service: {name: 'WManSvc', operation: change, startup: 4} 
+ - !service: {name: 'WinRM', operation: change, startup: 4} 
+ - !service: {name: 'wisvc', operation: change, startup: 4}
+ - !service: {name: 'WMPNetworkSvc', operation: change, startup: 4}
+ - !service: {name: 'wmiApSrv', operation: change, startup: 4}
+ - !service: {name: 'WPDBusEnum', operation: change, startup: 4}
+ - !service: {name: 'WSearch', operation: change, startup: 4}
+ - !service: {name: 'WpcMonSvc', operation: change, startup: 4}
+ - !service: {name: 'WpnService', operation: change, startup: 4}
+
+ - !service: {name: "Spooler", operation: stop} 
+ - !service: {name: "XblAuthManager", operation: stop} 
+ - !service: {name: "XblGameSave", operation: stop} 
+ - !service: {name: "XboxNetApiSvc", operation: stop} 
+
+ - !service: {name: 'AssignedAccessManagerSvc', operation: delete}
+ - !service: {name: 'diagnosticshub.standardcollector.service', operation: delete}
+ - !service: {name: 'DiagTrack', operation: delete}
+ - !service: {name: 'diagsvc', operation: delete}
+ - !service: {name: "dmwappushservice", operation: delete}
+ - !service: {name: "CDPUserSvc", operation: delete}
+ - !service: {name: "TroubleshootingSvc", operation: delete}
+ - !service: {name: "uhssvc", operation: delete}
+ - !service: {name: 'WarpJITSvc', operation: delete}
+ - !service: {name: "wercplsupport", operation: delete}
+

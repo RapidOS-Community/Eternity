@@ -1,0 +1,113 @@
+---
+title: Windows-Defender
+description: Windows-Defender
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Enabling windows defender', option: "enable-def"}
+   # Enable Services
+ - !service: {name: 'SecurityHealthService', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'SgrmAgent', operation: change, startup: 2, option: "enable-def"} 
+ - !service: {name: 'SgrmBroker', operation: change, startup: 2, option: "enable-def"} 
+ - !service: {name: 'MsSecFlt', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'Sense', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'WdBoot', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'WdFilter', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'WdNisDrv', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'WdNisSvc', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'WinDefend', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'wscsvc', operation: change, startup: 2, option: "enable-def"}
+
+   # Enable SmartScreen
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'SmartScreenEnabled', type: REG_SZ, data: 'On', option: "enable-def"}
+ - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'EnableSmartScreen', type: REG_DWORD, data: '1', option: "enable-def"}
+ - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControl', type: REG_DWORD, data: '1', option: "enable-def"}
+ - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControlEnabled', type: REG_DWORD, data: '1', option: "enable-def"}
+
+ - !writeStatus: {status: 'Disabling windows defender', option: "disable-def"}
+   # Disable Services
+ - !service: {name: 'SecurityHealthService', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'SgrmAgent', operation: change, startup: 4, option: "disable-def"} 
+ - !service: {name: 'SgrmBroker', operation: change, startup: 4, option: "disable-def"} 
+ - !service: {name: 'MsSecFlt', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'Sense', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'WdBoot', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'WdFilter', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'WdNisDrv', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'WdNisSvc', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'WinDefend', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'wscsvc', operation: change, startup: 4, option: "disable-def"}
+
+   # Disable SmartScreen
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'SmartScreenEnabled', type: REG_SZ, data: 'Off', option: "disable-def"}
+ - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'EnableSmartScreen', type: REG_DWORD, data: '0', option: "disable-def"}
+ - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControl', type: REG_DWORD, data: '0', option: "disable-def"}
+ - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControlEnabled', type: REG_DWORD, data: '0', option: "disable-def"}
+  
+   # Remove SecurityHealthSystray startup item
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'SecurityHealth', operation: delete}
+
+ - !writeStatus: {status: 'Removing windows defender', option: "remove-def"}
+   # If you remove Windows Defender you could not recover it
+ - !taskKill: {name: 'NisSrv', option: "remove-def"}
+ - !taskKill: {name: 'SecurityHealthHost', option: "remove-def"}
+ - !taskKill: {name: 'SecurityHealthService', option: "remove-def"}
+ - !taskKill: {name: 'SecurityHealthSystray', option: "remove-def"}
+ - !taskKill: {name: 'SkypeBackgroundHost', option: "remove-def"}
+ - !taskKill: {name: 'MsMpEng', option: "remove-def"}
+ - !taskKill: {name: 'msiexec', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\smartscreen.exe', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthSystray.exe', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthService.exe', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthAgent.dll', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthHost.exe', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthSSO.dll', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthCore.dll', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthProxyStub.dll', option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\SecurityHealthUdk.dll', option: "remove-def"}
+ - !file: {path: 'C:\Program Files\Windows Defender', weight: 30, option: "remove-def"}
+ - !file: {path: 'C:\ProgramData\Microsoft\Windows Defender', weight: 30, option: "remove-def"}
+ - !file: {path: 'C:\Program Files (x86)\Windows Defender', weight: 30, option: "remove-def"}
+ - !file: {path: 'C:\Windows\System32\drivers\WdNisDrv.sys', option: "remove-def"}
+ - !file: {path: 'C:\Program Files\Windows Defender Advanced Threat Protection', option: "remove-def"}
+ - !file: {path: 'C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection', option: "remove-def"}
+
+   # AtlasOS
+   # Windows Defender
+ - !systemPackage: {name: 'Windows-Defender-AM-Default-Definitions-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-AM-Default-Definitions-Deployment', arch: amd64, language: 'neutral', excludeDependents: ['Windows-Defender-AM-Engine'], option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-AppLayer-Group-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-AppLayer-Group-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-ApplicationGuard-Inbox-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-ApplicationGuard-Inbox-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-ApplicationGuard-Inbox-WOW64-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-ApplicationGuard-Inbox-WOW64-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Branding', arch: wow64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Core-Group-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Core-Group-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Events', arch: wow64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Group-Policy-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Group-Policy-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-Group-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-Group-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-MDM-Group-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-MDM-Group-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-Powershell-Group-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-Powershell-Group-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Management-Powershell', arch: x86, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Nis-Group-Deployment-LanguagePack', arch: amd64, language: 'en-US', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Nis-Group-Deployment', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Service-MpClientEtw', arch: wow64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-Service', arch: wow64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Windows-Defender-UI', arch: wow64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-SecHealthUI.AppxMain', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-SecHealthUI.AppxSetup', arch: amd64, language: 'neutral', option: "remove-def"}
+
+   # SmartScreen
+ - !systemPackage: {name: 'Microsoft-Windows-AppRep-ChxApp.appxmain', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-AppRep-ChxApp.appxsetup', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-AppRep', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-AppRep', arch: wow64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-DeviceManagement-PolicyDefinition-SmartScreen', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-SmartScreen-Adm', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-SmartScreen', arch: amd64, language: 'neutral', option: "remove-def"}
+ - !systemPackage: {name: 'Microsoft-Windows-SmartScreen', arch: wow64, language: 'neutral', option: "remove-def"}

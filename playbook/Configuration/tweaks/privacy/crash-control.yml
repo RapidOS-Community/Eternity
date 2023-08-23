@@ -1,0 +1,8 @@
+---
+title: crash-control
+description: crash-control
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\CrashControl', value: 'AutoReboot', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\CrashControl', value: 'CrashDumpEnabled', type: REG_DWORD, data: '3'}
+

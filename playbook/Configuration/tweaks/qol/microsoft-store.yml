@@ -1,0 +1,25 @@
+---
+title: microsoft-store
+description: microsoft-store
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsStore', value: 'AutoDownload', type: REG_DWORD, data: '4'}
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\WindowsStore', value: 'DisableOSUpgrade', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsStore', value: 'DisableOSUpgrade', type: REG_DWORD, data: '1'}
+
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Registration Wizard Control', value: 'NoRegistration', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\SearchCompanion', value: 'DisableContentFileUpdates', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers', value: 'DisableHTTPPrinting', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers', value: 'DisableWebPnPDownload', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching', value: 'DontSearchWindowsUpdate', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate', value: 'DisableWindowsUpdateAccess', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports', value: 'PreventHandwritingErrorReports', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC', value: 'PreventHandwritingDataSharing', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsMovieMaker', value: 'WebHelp', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsMovieMaker', value: 'CodecDownload', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsMovieMaker', value: 'WebPublish', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows', value: 'CEIPEnable', type: REG_DWORD, data: '0'}
+
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\wscsvc', value: 'Start', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\mpssvc', value: 'Start', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\BFE', value: 'Start', type: REG_DWORD, data: '2'}

@@ -1,0 +1,10 @@
+---
+title: oem
+description: oem
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion', value: 'EditionSubstring', type: REG_SZ, data: 'EternityOS'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion', value: 'EditionSubManufacturer', type: REG_SZ, data: 'Eternity'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Manufacturer', type: REG_SZ, data: 'Eternity'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'SupportURL', type: REG_SZ, data: 'https://discord.gg/BpSvdv6e7F'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Model', type: REG_SZ, data: 'EternityOS 22H2'}

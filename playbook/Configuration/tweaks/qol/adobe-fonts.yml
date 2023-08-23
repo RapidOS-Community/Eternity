@@ -1,0 +1,6 @@
+---
+title: adobe-fonts
+description: adobe-fonts
+privilege: TrustedInstaller
+actions: 
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Font Drivers', value: 'Adobe Type Manager', operation: delete}

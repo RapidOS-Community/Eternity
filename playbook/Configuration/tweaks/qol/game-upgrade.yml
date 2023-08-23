@@ -1,0 +1,15 @@
+---
+title: game-upgrader
+description: game-upgrader
+privilege: TrustedInstaller
+actions:
+   # CFG mitigation for Valorant
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\vgc.exe', value: 'MitigationOptions', type: REG_BINARY, data: '000000000001000000000000000000000000000000000000'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\vgc.exe', value: 'MitigationAuditOptions', type: REG_BINARY, data: '000000000000000000000000000000000000000000000000'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\vgc.exe', value: 'EAFModules', type: REG_SZ, data: ''}
+
+   # ASLR mitigation for osu!
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\osu!.exe', value: 'MitigationOptions', type: REG_BINARY, data: '000021000000000000000000000000000000000000000000'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\osu!.exe', value: 'MitigationAuditOptions', type: REG_BINARY, data: '000000000000000000000000000000000000000000000000'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\osu!.exe', value: 'EAFModules', type: REG_SZ, data: ''}  
+

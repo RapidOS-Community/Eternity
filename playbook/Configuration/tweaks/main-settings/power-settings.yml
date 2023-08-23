@@ -1,0 +1,38 @@
+---
+title: power-settings
+description: power-settings
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Configuring power settings'}
+ - !run: {exe: 'powercfg', args: '-duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 3ff9831b-6f80-4830-8178-736cd4229e7b', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-changename 3ff9831b-6f80-4830-8178-736cd4229e7b "Performance Mode" "Ultimate Performance for gamers."', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-s 3ff9831b-6f80-4830-8178-736cd4229e7b', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-delete e9a42b02-d5df-448d-aa00-03f14749eb61', showOutput: false, showError: false}
+ 
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current sub_processor PERFINCPOL 2', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current sub_processor PERFDECPOL 1', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current sub_processor PERFINCTHRESHOLD 10', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current sub_processor PERFDECTHRESHOLD 8', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 4', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current sub_processor DISTRIBUTEUTIL 0', showOutput: false, showError: false}
+
+   # AtlasOS
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb 0', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current 2e601130-5351-4d9d-8e04-252966bad054 d502f7ee-1dc7-4efd-a55d-f04b6f5c0545 0', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current 0012ee47-9041-4b5d-9b77-535fba8b1442 d3d55efd-c1ff-424e-9dc3-441be7833010 0', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current 0012ee47-9041-4b5d-9b77-535fba8b1442 d639518a-e56d-4345-8af2-b9f32fb26109 0', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current 0012ee47-9041-4b5d-9b77-535fba8b1442 fc7372b6-ab2d-43ee-8797-15e9841f2cca 0', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '-setdcvalueindex scheme_current 238c9fa8-0aad-41ed-83f4-97be242c8f20 abfc2519-3608-4c2a-94ea-171b0ed546ab 0', showOutput: false, showError: false}
+
+ - !run: {exe: 'powercfg', args: '/hibernate off', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '/change monitor-timeout-ac 0', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '/change monitor-timeout-dc 20', showOutput: false, showError: false}
+ - !run: {exe: 'powercfg', args: '/setactive scheme_current', showOutput: false, showError: false}
+
+ - !run: {exe: 'wevtutil', args: 'sl Microsoft-Windows-SleepStudy/Diagnostic /e:false', showOutput: false}
+ - !run: {exe: 'wevtutil', args: 'sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false', showOutput: false}
+ - !run: {exe: 'wevtutil', args: 'sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false', showOutput: false}
+
+

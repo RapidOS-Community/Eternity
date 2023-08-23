@@ -1,0 +1,6 @@
+---
+title: microsoft-teams
+description: microsoft-teams
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications', value: 'ConfigureChatAutoInstall', type: REG_DWORD, data: '0'}

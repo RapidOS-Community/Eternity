@@ -1,0 +1,8 @@
+---
+title: rebuild-performance-counters
+description: rebuild-performance-counters
+privilege: TrustedInstaller
+actions:
+ - !run: {exe: 'lodctr', args: '/r'}
+ - !run: {exe: 'lodctr', args: '/r'}
+ - !run: {exe: 'winmgmt', args: '/resyncperf'}

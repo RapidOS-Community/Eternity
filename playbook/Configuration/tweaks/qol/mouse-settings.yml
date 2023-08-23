@@ -1,0 +1,12 @@
+---
+title: mouse-settings
+description: mouse-settings
+privilege: TrustedInstaller
+actions: 
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseSpeed', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseHoverTime', type: REG_SZ, data: '30'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseThreshold1', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseThreshold2', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseSensitivity', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'SmoothMouseYCurve', type: REG_BINARY, data: '0000000000000000000038000000000000007000000000000000A800000000000000E00000000000'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'SmoothMouseXCurve', type: REG_BINARY, data: '0000000000000000C0CC0C0000000000809919000000000040662600000000000033330000000000'}

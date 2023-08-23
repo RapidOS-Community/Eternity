@@ -1,0 +1,25 @@
+---
+title: taskbar
+description: taskbar
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderDocuments', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderDocuments_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderDownloads', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderDownloads_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderFileExplorer', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderFileExplorer_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderHomeGroup', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderHomeGroup_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderMusic', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderMusic_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderNetwork', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderNetwork_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderPersonalFolder', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderPersonalFolder_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderPictures', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderPictures_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderSettings', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderSettings_ProviderSet', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderVideos', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'AllowPinnedFolderVideos_ProviderSet', type: REG_DWORD, data: '0'}

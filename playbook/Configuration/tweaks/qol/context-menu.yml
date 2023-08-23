@@ -1,0 +1,69 @@
+---
+title: context-menu
+description: context-menu
+privilege: TrustedInstaller
+actions:
+   # Remove 'Restore previous versions' from context menu and file' properties
+ - !registryKey: {path: 'HKCR\AllFilesystemObjects\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\Directory\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\Drive\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\Directory\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryKey: {path: 'HKCR\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer', value: 'NoPreviousVersionsPage', operation: delete}
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\PreviousVersions', value: 'DisableLocalPage', operation: delete}
+
+   # Remove 'Give access to' from context menu
+ - !registryKey: {path: 'HKCR\*\shellex\ContextMenuHandlers\Sharing'}
+ - !registryKey: {path: 'HKCR\Directory\Background\shellex\ContextMenuHandlers\Sharing'}
+ - !registryKey: {path: 'HKCR\Directory\shellex\ContextMenuHandlers\Sharing'}
+ - !registryKey: {path: 'HKCR\Drive\shellex\ContextMenuHandlers\Sharing'}
+ - !registryKey: {path: 'HKCR\LibraryFolder\background\shellex\ContextMenuHandlers\Sharing'}
+ - !registryKey: {path: 'HKCR\UserLibraryFolder\shellex\ContextMenuHandlers\Sharing'}
+
+   # Remove 'Cast to device' from context menu
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked', value: '{7AD84985-87B4-4a16-BE58-8B72A5B390F7}', type: REG_SZ, data: ''}
+
+   # Remove 'Share' from context menu
+ - !registryKey: {path: 'HKCR\*\shellex\ContextMenuHandlers\ModernSharing'}
+
+   # Remove 'Extract all' from context menu
+ - !registryKey: {path: 'HKCR\CompressedFolder\ShellEx\ContextMenuHandlers\{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}'}
+
+   # Remove bitmap image from the 'New' context menu
+ - !registryKey: {path: 'HKCR\.bmp\ShellNew'}
+
+   # Remove rich text document from 'New' context menu
+ - !registryKey: {path: 'HKCR\.rtf\ShellNew'}
+
+   # Remove 'Include in library' from context menu
+ - !registryKey: {path: 'HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location'}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location'}
+
+   # Remove 'Troubleshooting compatibility' from context menu
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked', value: '{1d27f844-3a1f-4410-85ac-14651078412d}', type: REG_SZ, data: ''}
+ - !registryValue: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked', value: '{1d27f844-3a1f-4410-85ac-14651078412d}', type: REG_SZ, data: ''}
+
+   # Remove 'Open in terminal' from context menu
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked', value: '{9F156763-7844-4DC4-B2B1-901F640F5155}', type: REG_SZ, data: ''}
+
+   # Remove 'ModernSharing' from context menu
+ - !registryKey: {path: 'HKCR\AllFileSystemObjects\ShellEx\ContextMenuHandlers\ModernSharing'}
+
+   # Remove '- Shortcut' text added onto shortcuts
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer', value: 'link', type: REG_BINARY, data: '00000000'}
+
+   # Remove 'Edit with Paint 3D' from context menu
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.3mf\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.bmp\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.fbx\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.gif\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.jfif\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.jpe\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.jpeg\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.jpg\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.png\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.tif\Shell\3D Edit'}
+ - !registryKey: {path: 'HKCR\SystemFileAssociations\.tiff\Shell\3D Edit'}

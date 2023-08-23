@@ -1,0 +1,25 @@
+---
+title: boot-settings
+description: boot-settings
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Configuring boot settings'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize', value: 'StartupDelayInMSec', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\Session Manager', value: 'BootExecute', type: REG_MULTI_SZ, data: 'autocheck autochk /k:C*'}
+ - !run: {exe: 'bcdedit', args: '/set description "EternityOS"'}
+ - !run: {exe: 'bcdedit', args: '/set useplatformtick yes', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set disabledynamictick yes', showOutput: false, showError: false}  
+ - !run: {exe: 'bcdedit', args: '/set bootmenupolicy Legacy', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set isolatedcontext no', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set debug no', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set integrityservices disable', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set ems no', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set pae ForceDisable', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set linearaddress57 OptOut', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set increaseuserva 268435328', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set firstmegabytepolicy UseAll', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set avoidlowmemory 0x8000000', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set nolowmem yes', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/set allowedinmemorysettings 0x0', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/timeout 15', showOutput: false, showError: false}
+ - !run: {exe: 'bcdedit', args: '/deletevalue useplatformclock', showOutput: false, showError: false}

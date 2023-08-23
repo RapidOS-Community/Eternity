@@ -1,0 +1,19 @@
+---
+title: system-shutdown-timeout
+description: system-shutdown-timeout
+privilege: TrustedInstaller
+actions:
+   # Disables the blue screen that pops up when you're trying to shutdown or restart, asking you to save your work
+ - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'AutoEndTasks', type: REG_SZ, data: '1'}
+
+   # HungAppTimeout also specifies how long the system waits for user processes to end after the user clicks/taps on the End task button in Task Manager
+ - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'HungAppTimeout', type: REG_SZ, data: '2000'}
+
+   # The WaitToKillAppTimeout value determines how long the system waits for user processes to end after the user attempts to sign out, restart, or shut down Windows
+ - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'WaitToKillAppTimeout', type: REG_SZ, data: '2000'}
+
+   # This value controls the timeout period in milliseconds for all low-level hooks
+ - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'LowLevelHooksTimeout', type: REG_SZ, data: '1000'}
+
+   # Speed up shutdown time by lowering the amount of time it takes the OS to close/kill background Services
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control', value: 'WaitToKillServiceTimeout', type: REG_SZ, data: '1000'}

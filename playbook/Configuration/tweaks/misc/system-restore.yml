@@ -1,0 +1,8 @@
+---
+title: system-restore
+description: system-restore
+privilege: TrustedInstaller
+actions:
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SPP\Clients'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore', value: 'RPSessionInterval', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore\cfg', value: 'DiskPercent', type: REG_DWORD, data: '0'}
