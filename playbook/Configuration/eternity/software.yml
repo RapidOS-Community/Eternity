@@ -1,0 +1,218 @@
+---
+title: software
+description: software
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Installing Chocolatey'}
+ - !powerShell:
+   command: 'Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(''https://community.chocolatey.org/install.ps1''))'
+   weight: 30
+
+
+ # - !writeStatus: {status: 'Tweaking Edge'}
+   # Disable Microsoft Edge's updates
+ - !taskKill: {name: 'MicrosoftEdgeUpdate', option: "browsers-upd"}
+ - !service: {name: 'edgeupdate', operation: change, startup: 4, option: "browsers-upd"}
+ - !service: {name: 'edgeupdatem', operation: change, startup: 4, option: "browsers-upd"}
+ - !service: {name: 'MicrosoftEdgeElevationService', operation: change, startup: 4, option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'AutoUpdateCheckEnabled', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'DisableAutoUpdate', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !scheduledTask: {path: '\MicrosoftEdgeUpdateBrowserReplacementTask', operation: disable, option: "browsers-upd"}
+
+   # Prevent MS Edge Chromium being installed after updates.
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate', value: 'InstallDefault', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate', value: 'Install{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate', value: 'Install{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate', value: 'DoNotUpdateToEdgeWithChromium', type: REG_DWORD, data: '1'}
+
+   # Disable Phishing Filter and SmartScreen in Microsoft Edge when Windows Defender disabled.
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Edge\SmartScreenEnabled', value: '', type: REG_DWORD, data: '0', option: "disable-def"}
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\MicrosoftEdge\PhishingFilter', value: 'EnabledV9', type: REG_DWORD, data: '0', option: "disable-def"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter', value: 'EnabledV9', type: REG_DWORD, data: '0', option: "disable-def"}
+
+   # Enable Phishing Filter and SmartScreen in Microsoft Edge when Windows Defender enabled.
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Edge\SmartScreenEnabled', value: '', type: REG_DWORD, data: '1', option: "enable-def"}
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\MicrosoftEdge\PhishingFilter', value: 'EnabledV9', type: REG_DWORD, data: '1', option: "enable-def"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter', value: 'EnabledV9', type: REG_DWORD, data: '1', option: "enable-def"}
+
+   # Disable Microsoft Edge's background processes 
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'AllowBackgroundRunning', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'AllowBackgroundTaskHost', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main', value: 'AllowPrelaunch', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\TabPreloader', value: 'AllowTabPreloading', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\TabPreloader', value: 'PreventTabPreloading', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main', value: 'AllowPrelaunch', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\TabPreloader', value: 'AllowTabPreloading', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\TabPreloader', value: 'PreventTabPreloading', type: REG_DWORD, data: '1'}
+
+   # Disable Microsoft Edge's telemetry
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'AllowTelemetry', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'ProductImprovementEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Edge', value: 'DiagnosticDataSubmissionEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main', value: 'PreventLiveTileDataCollection', type: REG_DWORD, data: '1', option: "browsers-tel"}
+ - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main', value: 'PreventLiveTileDataCollection', type: REG_DWORD, data: '1', option: "browsers-tel"}
+
+   # Install uBlockOrigin in Microsoft Edge
+ - !registryValue: {path: 'HKLM\Software\Microsoft\Edge\Extensions\odfafepnkmbhccpbejgmiehpchacaeak', value: 'update_url', type: REG_SZ, data: 'https://edge.microsoft.com/extensionwebstorebase/v1/crx'}
+
+
+ - !writeStatus: {status: 'Installing Brave', option: "browser-brave"}
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums brave'
+   weight: 100
+   option: "browser-brave"
+
+ - !writeStatus: {status: 'Tweaking Brave', option: "browser-brave"}
+   # Disable Brave's updates
+ - !taskKill: {name: 'BraveUpdate', option: "browsers-upd"}
+ - !service: {name: 'brave', operation: change, startup: 4, option: "browsers-upd"}
+ - !service: {name: 'bravem', operation: change, startup: 4, option: "browsers-upd"}
+ - !service: {name: 'BraveElevationService', operation: change, startup: 4, option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Update', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Update', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Update', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Update', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Update', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Update', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Wow6432Node\BraveSoftware\Update', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Wow6432Node\BraveSoftware\Update', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Wow6432Node\BraveSoftware\Update', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Wow6432Node\BraveSoftware\Update', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Wow6432Node\BraveSoftware\Update', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Wow6432Node\BraveSoftware\Update', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+
+   # Disable Telemetry
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Brave', value: 'MetricsReportingEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave', value: 'MetricsReportingEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+
+   # Brave's Settings
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Brave', value: 'BraveRewardsEnabled', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave', value: 'BraveRewardsEnabled', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Brave', value: 'BackgroundModeEnabled', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave', value: 'BackgroundModeEnabled', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Brave', value: 'HomepageIsNewTabPage', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave', value: 'HomepageIsNewTabPage', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\BraveSoftware\Brave', value: 'SidebarEnabled', type: REG_DWORD, data: '0', option: "browser-brave"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave', value: 'SidebarEnabled', type: REG_DWORD, data: '0', option: "browser-brave"}
+
+   # Install uBlockOrigin in Brave
+ - !registryValue: {path: 'HKCU\Software\BraveSoftware\Brave-Browser', value: 'ExtensionInstallForcelistEnabled', type: REG_DWORD, data: '1', option: "browser-brave"}
+ - !registryValue: {path: 'HKLM\Software\BraveSoftware\Brave-Browser', value: 'ExtensionInstallForcelistEnabled', type: REG_DWORD, data: '1', option: "browser-brave"}
+ - !registryValue: {path: 'HKCU\Software\BraveSoftware\Brave-Browser\ExtensionInstallForcelist', value: '1', type: REG_SZ, data: 'cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx', option: "browser-brave"}
+ - !registryValue: {path: 'HKLM\Software\BraveSoftware\Brave-Browser\ExtensionInstallForcelist', value: '1', type: REG_SZ, data: 'cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx', option: "browser-brave"}
+
+
+ - !writeStatus: {status: 'Installing Firefox', option: "browser-firefox"}
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums firefox'
+   weight: 100
+   option: "browser-firefox"
+
+ - !writeStatus: {status: 'Tweaking Firefox', option: "browser-firefox"}
+   # Disable Firefox's updates
+ - !taskKill: {name: 'Firefox', option: "browsers-upd"}
+ - !service: {name: 'MozillaMaintenance', operation: change, startup: 4, option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Mozilla\Firefox', value: 'DisableAppUpdate', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Mozilla\Firefox', value: 'DisableAppUpdate', type: REG_DWORD, data: '1', option: "browsers-upd"}
+
+   # Disable Telemetry
+ - !registryValue {path: 'HKCU\SOFTWARE\Policies\Mozilla\Firefox', value: 'DataSubmissionEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue {path: 'HKLM\SOFTWARE\Policies\Mozilla\Firefox', value: 'DataSubmissionEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue {path: 'HKCU\Software\Policies\Mozilla\Firefox', value: 'DisableTelemetry', type: REG_DWORD, data: '1', option: "browsers-tel"}
+ - !registryValue {path: 'HKLM\Software\Policies\Mozilla\Firefox', value: 'DisableTelemetry', type: REG_DWORD, data: '1', option: "browsers-tel"}
+ - !registryValue {path: 'HKCU\Software\Mozilla\Firefox\Launcher', value: 'C:\Program Files\Mozilla Firefox\firefox.exe|Telemetry', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue {path: 'HKLM\Software\Mozilla\Firefox\Launcher', value: 'C:\Program Files\Mozilla Firefox\firefox.exe|Telemetry', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue {path: 'HKCU\Software\Mozilla\Firefox\Default Browser Agent', value: 'C:\Program Files\Mozilla Firefox|DisableDefaultBrowserAgent', type: REG_DWORD, data: '1', option: "browsers-tel"}
+ - !registryValue {path: 'HKLM\Software\Mozilla\Firefox\Default Browser Agent', value: 'C:\Program Files\Mozilla Firefox|DisableDefaultBrowserAgent', type: REG_DWORD, data: '1', option: "browsers-tel"}
+ - !registryValue {path: 'HKCU\Software\Mozilla\Firefox\Default Browser Agent', value: 'C:\Program Files\Mozilla Firefox|DisableTelemetry', type: REG_DWORD, data: '1', option: "browsers-tel"}
+ - !registryValue {path: 'HKLM\Software\Mozilla\Firefox\Default Browser Agent', value: 'C:\Program Files\Mozilla Firefox|DisableTelemetry', type: REG_DWORD, data: '1', option: "browsers-tel"}
+
+   # Firefox's Settings
+ - !registryValue {path: 'HKCU\Software\Policies\Mozilla\Firefox', value: 'DisablePocket', type: REG_DWORD, data: '1', option: "browser-firefox"}
+ - !registryValue {path: 'HKLM\Software\Policies\Mozilla\Firefox', value: 'DisablePocket', type: REG_DWORD, data: '1', option: "browser-firefox"}
+ - !registryValue {path: 'HKCU\Software\Policies\Mozilla\Firefox', value: 'CaptivePortal', type: REG_DWORD, data: '0', option: "browser-firefox"}
+ - !registryValue {path: 'HKLM\Software\Policies\Mozilla\Firefox', value: 'CaptivePortal', type: REG_DWORD, data: '0', option: "browser-firefox"}
+ - !registryValue {path: 'HKCU\Software\Policies\Mozilla\Firefox', value: 'DisableFirefoxStudies', type: REG_DWORD, data: '1', option: "browser-firefox"}
+ - !registryValue {path: 'HKLM\Software\Policies\Mozilla\Firefox', value: 'DisableFirefoxStudies', type: REG_DWORD, data: '1', option: "browser-firefox"}
+
+   # Install uBlockOrigin in Firefox
+ - !registryValue {path: 'HKCU\Software\Policies\Mozilla\Firefox', value: 'ExtensionSettings', type: REG_MULTI_SZ, data: '{\\0   "uBlock0@raymondhill.net": {\\0    "installation_mode": "force_installed",\\0    "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"\\0  }\\0}', option: "browser-firefox"}
+ - !registryValue {path: 'HKLM\Software\Policies\Mozilla\Firefox', value: 'ExtensionSettings', type: REG_MULTI_SZ, data: '{\\0   "uBlock0@raymondhill.net": {\\0    "installation_mode": "force_installed",\\0    "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"\\0  }\\0}', option: "browser-firefox"}
+
+
+ - !writeStatus: {status: 'Installing Chrome', option: "browser-chrome"}
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums googlechrome'
+   weight: 100
+   option: "browser-chrome"
+
+ - !writeStatus: {status: 'Tweaking Chrome', option: "browser-chrome"}
+   # Disable Chrome's updates
+ - !taskKill: {name: 'GoogleUpdate', option: "browsers-upd"}
+ - !taskKill: {name: 'GoogleUpdateOnDemand', option: "browsers-upd"}
+ - !service: {name: 'googlechromeelevationservice', operation: change, startup: 4, option: "browsers-upd"}
+ - !service: {name: 'gupdatem', operation: change, startup: 4, option: "browsers-upd"}
+ - !service: {name: 'gupdate', operation: change, startup: 4, option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Wow6432Node\Google\Chrome', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Wow6432Node\Google\Chrome', value: 'UpdateDefault', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Wow6432Node\Google\Chrome', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Wow6432Node\Google\Chrome', value: 'DisableAutoUpdateChecksCheckboxValue', type: REG_DWORD, data: '1', option: "browsers-upd"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Wow6432Node\Google\Chrome', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Wow6432Node\Google\Chrome', value: 'AutoUpdateCheckPeriodMinutes', type: REG_DWORD, data: '0', option: "browsers-upd"}
+
+   # Disable Telemetry
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun', value: '1', type: REG_SZ, data: 'software_reporter_tool.exe', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun', value: '1', type: REG_SZ, data: 'software_reporter_tool.exe', option: "browsers-tel"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome\Recommended', value: 'MetricsReportingEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome\Recommended', value: 'MetricsReportingEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome\Recommended', value: 'DeviceMetricsReportingEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome\Recommended', value: 'DeviceMetricsReportingEnabled', type: REG_DWORD, data: '0', option: "browsers-tel"}
+
+   # Chrome's Settings
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'ChromeCleanupEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'ChromeCleanupEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'DefaultPopupsSetting', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'DefaultPopupsSetting', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'DefaultSensorsSetting', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'DefaultSensorsSetting', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'UserFeedbackAllowed', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'UserFeedbackAllowed', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'SpellCheckServiceEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'SpellCheckServiceEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'SpellcheckEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'SpellcheckEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'HomepageIsNewTabPage', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'HomepageIsNewTabPage', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Google\Chrome', value: 'BackgroundModeEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Google\Chrome', value: 'BackgroundModeEnabled', type: REG_DWORD, data: '0', option: "browser-chrome"}
+ 
+   # Install uBlockOrigin in Chrome
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums ublockorigin-chrome'
+   weight: 10
+   option: "browser-chrome"
+
+
+ - !writeStatus: {status: 'Installing .NET Framework 3.5', option: "net"}
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums dotnet3.5'
+   weight: 70
+   option: "net"
+
+ - !writeStatus: {status: 'Installing DirectX', option: "directx"}
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums directx'
+   weight: 100
+   option: "directx"
+
+ - !writeStatus: {status: 'Installing vcredist', option: "vcredist"}
+ - !cmd:
+   command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums vcredist-all'
+   weight: 150
+   option: "vcredist"

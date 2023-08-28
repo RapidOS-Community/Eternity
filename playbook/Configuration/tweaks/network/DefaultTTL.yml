@@ -1,0 +1,11 @@
+---
+title: DefaultTTL
+description: DefaultTTL
+privilege: TrustedInstaller
+actions:
+   # Change DefaultTTL to 62 sec(default - 128 sec)
+ - !registryValue:
+   path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters'
+   value: 'DefaultTTL'
+   type: REG_DWORD
+   data: '62'

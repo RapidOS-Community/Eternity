@@ -1,0 +1,11 @@
+---
+title: startmenu
+description: startmenu
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Cleaning start menu', option: "ui"}
+ - !run:
+   exeDir: true
+   exe: "STARTMENU.bat"
+   weight: 100
+   option: "ui"

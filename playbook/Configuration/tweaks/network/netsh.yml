@@ -1,0 +1,27 @@
+---
+title: netsh
+description: netsh
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Configuring netsh parameters'}
+ - !run: {exe: 'netsh', args: 'int tcp set global rss=enabled'} 
+ - !run: {exe: 'netsh', args: 'int tcp set global rsc=disabled'} 
+ - !run: {exe: 'netsh', args: 'int tcp set global ecncapability=disabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set global timestamps=disabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set global chimney=disabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set global initialRto=2000'} 
+ - !run: {exe: 'netsh', args: 'int tcp set global MaxSynRetransmissions=2'}
+ - !run: {exe: 'netsh', args: 'int tcp set global fastopen=enabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set global fastopenfallback=enabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set global pacingprofile=off'}
+ - !run: {exe: 'netsh', args: 'int tcp set global hystart=disabled'} 
+ - !run: {exe: 'netsh', args: 'int tcp set global dca=enabled'} 
+ - !run: {exe: 'netsh', args: 'int tcp set global netdma=enabled'} 
+ - !run: {exe: 'netsh', args: 'int tcp set global nonsackrttresiliency=disabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set global maxsynretransmissions=2'}
+ - !run: {exe: 'netsh', args: 'int tcp set global neighborcachelimit=4096'}
+ - !run: {exe: 'netsh', args: 'int tcp set security profiles=disabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set security mpp=disabled'}
+ - !run: {exe: 'netsh', args: 'int tcp set heuristics disabled'}
+ - !run: {exe: 'netsh', args: 'interface Teredo set state type=enterpriseclient'}
+ - !run: {exe: 'netsh', args: 'interface Teredo set state servername=default'}

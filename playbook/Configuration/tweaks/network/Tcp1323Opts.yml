@@ -1,0 +1,11 @@
+---
+title: TCP1323Opts
+description: TCP1323Opts
+privilege: TrustedInstaller
+actions:
+   # Change TCP1323Opts to 1 GB IRPs(default - 0 GB)
+ - !registryValue:
+   path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters'
+   value: 'TCP1323Opts'
+   type: REG_DWORD
+   data: '1'

@@ -1,0 +1,85 @@
+---
+title: personalization
+description: personalization
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Configuring personalization'}
+   # Disable Non Critical Notifications(Windows Defender)
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications', value: 'DisableEnhancedNotifications', type: REG_DWORD, data: '1'}
+
+   # Disable recommendations from Windows 11
+   # - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows', value: 'HideRecentlyAddedApps', type: REG_DWORD, data: '1'}
+   # - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsConsumerFeatures', type: REG_DWORD, data: '1'}
+   # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'Start_ShowSuggested', type: REG_DWORD, data: '0'}
+   # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'SilentInstalledAppsEnabled', type: REG_DWORD, data: '0'}
+
+   # More pins than recommendations
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'Start_Layout', type: REG_DWORD, data: '1'}
+
+   # Disable Wallpaper Compression
+ - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'JPEGImportQuality', type: REG_DWORD, data: '100'}
+
+   # Disable news and interests in taskbar
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds', value: 'EnableFeeds', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Feeds', value: 'ShellFeedsTaskbarViewMode', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarDa', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Dsh', value: 'AllowNewsAndInterests', type: REG_DWORD, data: '0'}
+
+   # Disable Windows Chat icon in taskbar
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat', value: 'ChatIcon', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMn', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications', value: 'ConfigureChatAutoInstall', type: REG_DWORD, data: '0'}
+
+   # Disable the Meet Now icon
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'HideSCAMeetNow', type: REG_DWORD, data: '1'}
+
+   # Disable the Security and Maintenance icon
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\Explorer', value: 'HideSCAHealth', type: REG_DWORD, data: '1'}
+
+   # Disable the People Bar from the taskbar
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\Explorer', value: 'HidePeopleBar', type: REG_DWORD, data: '1'}
+
+   # Disable showing balloon notifications as toasts
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\Explorer', value: 'EnableLegacyBalloonNotifications', type: REG_DWORD, data: '1'}
+
+   # Feature advertisement balloon notifications
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\Explorer', value: 'NoBalloonFeatureAdvertisements', type: REG_DWORD, data: '1'}
+
+   # Notification area cleanup
+ - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\Explorer', value: 'NoAutoTrayNotify', type: REG_DWORD, data: '1'}
+
+
+   # Disallow suggested apps in Windows Ink Workspace
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace', value: 'AllowSuggestedAppsInWindowsInkWorkspace', type: REG_DWORD, data: '0'}
+
+   # Disallow Windows Ink Workspace
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace', value: 'AllowWindowsInkWorkspace', type: REG_DWORD, data: '0'}
+
+
+   # Make system dark
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'AppsUseLightTheme', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'SystemUsesLightTheme', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'AppsUseLightTheme', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'SystemUsesLightTheme', type: REG_DWORD, data: '0'}
+
+   # Startmenu pins 
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'ConfigureStartPins', type: REG_SZ, data: '{"pinnedList":[{"packagedAppId":"Microsoft.WindowsStore_8wekyb3d8bbwe!App"},{"packagedAppId":"windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"},{"packagedAppId":"Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"},{"packagedAppId":"Microsoft.WindowsNotepad_8wekyb3d8bbwe!App"},{"packagedAppId":"Microsoft.Paint_8wekyb3d8bbwe!App"},{"desktopAppLink":"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\File Explorer.lnk"}]}', option: "ui"}
+
+   # Taskbar pins
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband', value: 'Favorites', type: REG_BINARY, data: '00A40100003A001F80C827341F105C1042AA032EE45287D668260001002600EFBE1200000056F21270246AD8010F37A185246AD8012B113CA5246AD80114005600310000000000B154E29B11005461736B42617200400009000400EFBEB154C69BB154E29B2E000000F4940100000001000000000000000000000000000000D5BA89005400610073006B00420061007200000016001201320097010000874F0749200046494C4545587E312E4C4E4B00007C0009000400EFBEB154E29BB154E29B2E00000097900100000002000000000000000000520000000000589C4400460069006C00650020004500780070006C006F007200650072002E006C006E006B00000040007300680065006C006C00330032002E0064006C006C002C002D003200320030003600370000001C00120000002B00EFBE2B113CA5246AD8011C00420000001D00EFBE02004D006900630072006F0073006F00660074002E00570069006E0064006F00770073002E004500780070006C006F0072006500720000001C00260000001E00EFBE0200530079007300740065006D00500069006E006E006500640000001C000000FF', option: "ui"}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband', value: 'FavoritesResolve', type: REG_BINARY, data: '320300004C0000000114020000000000C0000000000000468300800020000000549E39A5246AD8012B113CA5246AD801A8B6C6DADDACD501970100000000000001000000000000000000000000000000A0013A001F80C827341F105C1042AA032EE45287D668260001002600EFBE1200000056F21270246AD8010F37A185246AD8012B113CA5246AD80114005600310000000000B154E29B11005461736B42617200400009000400EFBEB154C69BB154E29B2E000000F4940100000001000000000000000000000000000000D5BA89005400610073006B00420061007200000016000E01320097010000874F0749200046494C4545587E312E4C4E4B00007C0009000400EFBEB154E29BB154E29B2E00000097900100000002000000000000000000520000000000589C4400460069006C00650020004500780070006C006F007200650072002E006C006E006B00000040007300680065006C006C00330032002E0064006C006C002C002D003200320030003600370000001C00220000001E00EFBE02005500730065007200500069006E006E006500640000001C00120000002B00EFBE2B113CA5246AD8011C00420000001D00EFBE02004D006900630072006F0073006F00660074002E00570069006E0064006F00770073002E004500780070006C006F0072006500720000001C0000009B0000001C000000010000001C0000002D000000000000009A0000001100000003000000E4A63B761000000000433A5C55736572735C757365725C417070446174615C526F616D696E675C4D6963726F736F66745C496E7465726E6574204578706C6F7265725C517569636B204C61756E63685C557365722050696E6E65645C5461736B4261725C46696C65204578706C6F7265722E6C6E6B000060000000030000A058000000000000006465736B746F702D62356E36683339006E1A1EE27BFFA94ABB0361D86F25337E500764DB17D6EC11A598000C2907D6A06E1A1EE27BFFA94ABB0361D86F25337E500764DB17D6EC11A598000C2907D6A045000000090000A03900000031535053B1166D44AD8D7048A748402EA43D788C1D000000680000000048000000CE2181FCD4BF31408F25FF009E4345CA000000000000000000000000', option: "ui"}
+
+   # Old Context Menu
+ - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: ''}
+
+   # Show Task View button in taskbar
+   # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowTaskViewButton', type: REG_DWORD, data: '1'}
+
+   # Notifications network usage
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'NoCloudApplicationNotification', type: REG_DWORD, data: '1'}
+
+   # Windows Colors(don't works)
+   # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\DWM', value: 'AccentColor', type: REG_DWORD, data: '4279002103'}
+   # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\DWM', value: 'ColorizationColor', type: REG_DWORD, data: '3304547084'}
+   # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\DWM', value: 'ColorizationAfterglow', type: REG_DWORD, data: '3304547084'}
+

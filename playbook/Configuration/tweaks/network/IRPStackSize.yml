@@ -1,0 +1,11 @@
+---
+title: IRPStackSize
+description: IRPStackSize
+privilege: TrustedInstaller
+actions:
+   # Change IRPStackSize to 32 IRPs(default - 15 IRPs)
+ - !registryValue:
+   path: 'HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters'
+   value: 'IRPStackSize'
+   type: REG_DWORD
+   data: '32'

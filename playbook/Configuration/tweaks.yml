@@ -1,0 +1,74 @@
+---
+title: tweaks
+description: tweaks
+privilege: Admin
+actions: []
+features:
+ # Main configuration
+ - tweaks\main-settings\windows-settings.yml
+ - tweaks\main-settings\boot-settings.yml
+ - tweaks\main-settings\explorer-settings.yml
+ - tweaks\main-settings\power-settings.yml
+ - tweaks\bat-files\power.yml # It's must be here with power-settings
+
+ # Debloat
+ - tweaks\debloat\ms-edge.yml
+ - tweaks\debloat\onedrive.yml
+ - tweaks\debloat\schtasks.yml
+ - tweaks\debloat\update-health.yml
+
+ # Misc
+ - tweaks\misc\oem.yml
+ - tweaks\misc\old-photo-viewer.yml
+ - tweaks\misc\system-restore.yml
+
+ # Network
+ - tweaks\network\DefaultTTL.yml
+ - tweaks\network\IRPStackSize.yml
+ # - tweaks\network\MaxFreeTcbs.yml # Discarded due to bad fps on old PCs
+ - tweaks\network\MaxUserPort.yml
+ - tweaks\network\netsh.yml
+ - tweaks\network\SizReqBuf.yml
+ - tweaks\network\Tcp1323Opts.yml
+
+ # Performance
+ - tweaks\performance\file-system.yml
+ - tweaks\performance\prioritization-boost.yml
+ - tweaks\performance\rebuild-preformance-counters.yml
+ - tweaks\performance\register-tweaks.yml
+ - tweaks\performance\resource-policy.yml
+
+ # Privacy settings
+ - tweaks\privacy\autologgers.yml
+ - tweaks\privacy\crash-control.yml
+ - tweaks\privacy\defaultuser0.yml
+ - tweaks\privacy\fault-tolerant-heap.yml
+ - tweaks\privacy\privacy-settings.yml
+
+ # QOL - Quality Of Life
+ - tweaks\qol\adobe-fonts.yml
+ - tweaks\qol\audio-communications.yml
+ - tweaks\qol\bypass-requirements.yml
+ - tweaks\qol\context-menu.yml
+ - tweaks\qol\deprovisioned-apps.yml
+ - tweaks\qol\disable-startmenu-delay.yml
+ - tweaks\qol\ease-of-access.yml
+ - tweaks\qol\logon.yml
+ - tweaks\qol\microsoft-store.yml
+ - tweaks\qol\mouse-settings.yml
+ - tweaks\qol\personalization.yml
+ - tweaks\qol\system-shutdown-timeout.yml
+ - tweaks\qol\taskbar.yml
+ - tweaks\qol\windows-search.yml
+ - tweaks\qol\windows-updates.yml
+
+ # Security
+ - tweaks\security\spectre-meltdown.yml
+ - tweaks\security\user-account-control.yml
+ - tweaks\security\vbs.yml
+ - tweaks\security\win-defender.yml
+
+ # Bat files that start files in 'Executables'
+ - tweaks\bat-files\startmenu.yml
+ - tweaks\bat-files\wallpaper.yml
+ - tweaks\bat-files\finalize.yml

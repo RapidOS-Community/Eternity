@@ -1,0 +1,6 @@
+---
+title: audio-communications
+description: audio-communications
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Multimedia\Audio', value: 'UserDuckingPreference', type: REG_DWORD, data: '3'}

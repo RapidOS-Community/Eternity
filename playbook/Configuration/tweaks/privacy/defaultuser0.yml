@@ -1,0 +1,6 @@
+---
+title: defaultuser0
+description: defaultuser0
+privilege: TrustedInstaller
+actions:
+ - !run: {exe: 'net', args: 'user defaultuser0 /delete'}

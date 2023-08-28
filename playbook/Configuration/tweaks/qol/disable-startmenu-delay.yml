@@ -1,0 +1,7 @@
+---
+title: disable-startmenu-delay
+description: disable-startmenu-delay
+privilege: TrustedInstaller
+actions:
+   # Makes the Start Menu appear almost instantly when you click on the Windows icon in the Taskbar
+ - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'MenuShowDelay', type: REG_SZ, data: '0'}

@@ -1,0 +1,233 @@
+---
+title: packages
+description: packages
+privilege: TrustedInstaller
+actions:
+  # AtlasOS
+ - !writeStatus: {status: 'Removing system packages'}
+   # OOBE
+ - !systemPackage: {name: 'Microsoft-Windows-OOBENetworkCaptivePortal.AppxMain', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-OOBENetworkCaptivePortal.AppxSetup', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-DesktopFileExplorer-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+ - !systemPackage: {name: 'Microsoft-Windows-DesktopFileExplorer-Deployment', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-Internal-ShellCommon-FilePickerExperienceMEM', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-OOBENetworkConnectionFlow.AppxMain', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-OOBENetworkConnectionFlow.AppxSetup', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-PeopleExperienceHost.AppxMain', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-PeopleExperienceHost.AppxSetup', arch: amd64, language: 'neutral'}
+  
+   # Parental Controls
+ - !systemPackage: {name: 'Microsoft-Windows-ParentalControls.AppxMain', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ParentalControls.AppxSetup', arch: amd64, language: 'neutral'}
+
+   # Lock App
+ - !systemPackage: {name: 'Microsoft-Windows-LockApp.AppxMain', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-LockApp.AppxSetup', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-LockAppBroker-WinRT', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-LockAppBroker-WinRT', arch: wow64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-LockAppHost-AboveLockAppHost', arch: wow64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-LockAppHost-LockHostingFramework', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-LockAppHost', arch: amd64, language: 'neutral'}
+  
+   # Content Delivery Manager
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager-Capabilities', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager-Utilities', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager-Utilities', arch: wow64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxMain.FeatureManagement', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxMain.PreInstalledApps', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxMain.Ratings', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxMain.SoftLanding', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxMain.SubscribedContent', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxMain', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-ContentDeliveryManager.AppxSetup', arch: amd64, language: 'neutral'}
+ - !systemPackage: {name: 'Microsoft-Windows-SystemSettings-SettingsHandlers-ContentDeliveryManager', arch: amd64, language: 'neutral'}
+
+   # Offline Files
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Classes\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}'}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{450D8FBA-AD25-11D0-98A8-0800361B1103}'}
+
+   # Remove useless files and folders
+ - !file: {path: 'C:\Windows\System32\Tasks\Microsoft\Windows\Feedback'}
+ - !file: {path: 'C:\Windows\System32\MRT.exe'}
+ - !file: {path: 'C:\Windows\System32\devicecensus.exe'}
+ - !file: {path: 'C:\Windows\System32\CompatTelRunner.exe'}
+ - !file: {path: 'C:\Windows\System32\diagtrack.dll'}
+ - !file: {path: 'C:\PerfLogs'}
+ - !file: {path: 'C:\Intel'}
+ - !file: {path: 'C:\AMD'}
+  
+  # Telemetry and other packages(discarded due to automatic repair loop or/and bugs)
+  # - !systemPackage: {name: 'Microsoft-Windows-Compat-Appraiser-InboxDataFiles', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Compat-Appraiser-Logger', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Compat-Appraiser', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Compat-CompatTelRunner-DailyTask', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Compat-CompatTelRunner', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Compat-GeneralTel', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-DataCollection-Adm', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-KeyboardDiagnostic', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-SetupPlatform-Telemetry-AutoLogger', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-TelemetryClient', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-TelemetryPermission', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unified-Telemetry-Client-Aggregators', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unified-Telemetry-Client-AutoLogger-Default', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unified-Telemetry-Client-Decoder-Host', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unified-Telemetry-Client-Settings-WindowsClient', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unified-Telemetry-Client-WoWOnly', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unified-Telemetry-Client', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Windows-System-Diagnostics-Telemetry-PlatformTelemetryClient', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Windows-System-Diagnostics-Telemetry-PlatformTelemetryClient', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReporting-Adm', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingCompatibility', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingCompatibility', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingConsole', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingCore', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingFaults', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingFaults', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingKernel', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingPowershell', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingPowershell', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingUI', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ErrorReportingUI', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Feedback-CourtesyEngine', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Feedback-DeploymentMgrClient-Desktop-TaskSch', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Feedback-DeploymentMgrClient', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Feedback-Service', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-FeedbackNotifications-Adm', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Networking-MPSSVC-Admin', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Assistance-CollectionFiles-Help', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Assistance-CollectionFiles-Help', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-CommandLineHelp', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-CommandLineHelp', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-Adm', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-ClientOOBE-Feature-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-ClientOOBE-Feature-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-ClientProxy', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-ClientProxy', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-ClientUA-Client-merged-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-ClientUA-Client-merged-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-Client', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-Client', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-CoreClientCommon', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-CoreClientRes', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-DataLayer', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-DataLayer', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-PrivStatement', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-Resources-Client', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Help-Resources-Client', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-HelpAndSupport-Adm', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Microsoft-Data-Access-Components-(MDAC).Resources', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Microsoft-Data-Access-Components-(MDAC).Resources', arch: wow64, language: 'en-US'}
+  # - !systemPackage: {name: 'Server-Help-Deployment.ClientEnterprise.CHM-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Server-Help-Deployment.ClientEnterprise.CHM', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-BuildFlighting', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Flighting-FeatureConfiguration-Tasks', arch: amd64, language: 'neutral'}
+  ## Causes winver to show 2009, and makes start menu use the old block icon type
+  # - !systemPackage: {name: 'Microsoft-Windows-Flighting-FeatureConfiguration', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Flighting-Settings', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-SystemSettings-SettingsHandlers-Flights', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WAB', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WAB', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'c_holographic.inf-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'dual_c_holographic.inf', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'dual_perceptionsimulationheadset.inf', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'dual_perceptionsimulationsixdof.inf', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Composable-PlatformExtension-DragDropCommon-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Composable-PlatformExtension-DragDropCommon-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Composable-PlatformExtension-DragDropCommon-WOW64-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Analog-Input-SpatialStore', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Audio-VAC-Service', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Holographic-Desktop-Analog-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Holographic-Desktop-Analog-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Holographic-Desktop-Analog-WOW64-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Holographic-Desktop-Merged-merged-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Holographic-Desktop-Merged-merged-Deployment', arch: amd64, language: 'neutral', excludeDependents: ['Microsoft-Windows-VirtualMonitorManager']}
+  # - !systemPackage: {name: 'Microsoft-Windows-Holographic-Desktop-Merged-WOW64-merged-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Mirage', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Mirage', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionApi-Stub', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionDevice-DLL', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionDevice-DLL', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionSimulation-Service', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionSimulation-Service', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionSimulationExtensions-Desktop', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionSimulationExtensions', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PerceptionSimulationExtensions', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-SharedRealitySvc', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Spectrum-Service-Desktop', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-SpectrumSyncClient', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Spectrum', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-VirtualCameraManager', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-VirtualCameraManager', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'perceptionsimulationheadset.inf-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'perceptionsimulationsixdof.inf-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Windows-Devices-Perception', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-ThemeFiles-Personalization', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management-Core-Common-Extra', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management-Core', arch: amd64, language: 'neutral', excludeDependents: ['Microsoft-Windows-WMIV2-wmidcom-dll', 'Microsoft-Windows-WMIV2-miutils-dll'], regexExcludeFiles: ['.*\\WsmRes.dll.mui']}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management-Core', arch: wow64, language: 'neutral', excludeDependents: ['Microsoft-Windows-WMIV2-wmidcom-dll', 'Microsoft-Windows-WMIV2-miutils-dll'], regexExcludeFiles: ['.*\\WsmRes.dll.mui']}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management-EventFwd-Plugin', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management-WinRM-Http-Registration', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management-WMI-Plugin', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Web-Services-for-Management', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Networking-MPSSVC-Rules-WINRM', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Sysprep-SpWinSAT', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Sysprep-SpWinSAT', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WindowsSystemAssessmentToolAPI', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WindowsSystemAssessmentToolAPI', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WindowsSystemAssessmentTool', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WinSATMediaFiles-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WinOcr-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WinOcr-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WinOcr-TiffFilter', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Windows-Media-Ocr', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Windows-Media-Ocr', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PortableWorkspaces-SSO', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PortableWorkspaces-SysPrep', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-PortableWorkspaces-SysPrep', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Upfc', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WaaSAssessment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-WaaSMedic', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-cabview', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-cabview', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Pacman-Deployment-ZipContainer', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Pacman-Deployment-ZipContainer', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-zipfldr', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-zipfldr', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-COM-MSMQ-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-COM-MSMQ-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-adintegration-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-adintegration-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-dcomproxy-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-dcomproxy-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-dcomproxy-Opt-WOW64-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-http-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-http-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-http-Opt-WOW64-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-mmc-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-mmc-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-mmc-Opt-WOW64-Deployment', arch: amd64, language: 'neutral', excludeDependents: ['Microsoft-Windows-MSMQ-BPA.Resources']}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-multicast-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-multicast-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-powershell-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-powershell-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-powershell-Opt-WOW64-Deployment', arch: amd64, language: 'neutral', excludeDependents: ['Microsoft-Windows-msmq-powershell.Resources']}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-runtime-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-runtime-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-runtime-Opt-WOW64-Deployment', arch: amd64, language: 'neutral', excludeDependents: ['Microsoft-Windows-msmq.Resources']}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-server-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-server-Opt-Deployment', arch: amd64, language: 'neutral', excludeDependents: ['Microsoft-Windows-msmq-access-control-driver']}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-triggers-Opt-Deployment-LanguagePack', arch: amd64, language: 'en-US'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-triggers-Opt-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-msmq-triggers-Opt-WOW64-Deployment', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Config', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Config', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core-ATMini', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core-ATMini', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core-ClassDriver', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core-TSP', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core-TSP', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Core', arch: wow64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Voice', arch: amd64, language: 'neutral'}
+  # - !systemPackage: {name: 'Microsoft-Windows-Unimodem-Voice', arch: wow64, language: 'neutral'}

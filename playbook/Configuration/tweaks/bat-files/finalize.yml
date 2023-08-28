@@ -1,0 +1,11 @@
+---
+title: finalize
+description: finalize
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Finalizing configuration'}
+ - !run:
+   exeDir: true
+   exe: "FINALIZE.bat"
+   weight: 200
+ - !run: {baseDir: true, exe: "NSudoLC.exe", args: '-U:C -UseCurrentConsole explorer.exe'}

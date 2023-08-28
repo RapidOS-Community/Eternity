@@ -1,0 +1,41 @@
+---
+title: register-tweeks
+description: register-tweeks
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism', value: 'DistanceThresholdInDIPS', type: REG_DWORD, data: '28'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism', value: 'MagnetismDelayInMilliseconds', type: REG_DWORD, data: '32'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism', value: 'MagnetismUpdateIntervalInMilliseconds', type: REG_DWORD, data: '10'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism', value: 'AttractionRectInsetInDIPS', type: REG_DWORD, data: '5'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism', value: 'VelocityInDIPSPerSecond', type: REG_DWORD, data: '168'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorSpeed', value: 'IRRemoteNavigationDelta', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorSpeed', value: 'CursorSensitivity', type: REG_DWORD, data: '2710'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorSpeed', value: 'CursorUpdateInterval', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'CreateGdiPrimaryOnSlaveGPU', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DriverSupportsCddDwmInterop', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkCddSyncDxAccess', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkCddSyncGPUAccess', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkCddWaitForVerticalBlankEvent', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkCreateSwapChain', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkFreeGpuVirtualAddress', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkOpenSwapChain', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkShareSwapChainObject', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkWaitForVerticalBlankEvent', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'DxgkWaitForVerticalBlankEvent2', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'SwapChainBackBuffer', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'TdrResetFromTimeoutAsync', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'MonitorLatencyTolerance', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl', value: 'MonitorRefreshLatencyTolerance', type: REG_DWORD, data: '0'}
+
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NetworkThrottlingIndex', type: REG_DWORD, data: '4294967295'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'SystemResponsiveness', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NoLazyMode', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'LazyModeTimeout', type: REG_DWORD, data: '150000'}
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\PriorityControl', value: 'Win32PrioritySeparation', type: REG_DWORD, data: '38'}
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\Session Manager', value: 'DisableWpbtExecution', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\Session Manager\Memory Management', value: 'LargeSystemCache', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\Session Manager\Kernel', value: 'DisableTsx', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel', value: 'DistributeTimers', type: REG_DWORD, data: '1'}
+
+
+

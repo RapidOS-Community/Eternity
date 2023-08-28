@@ -1,0 +1,14 @@
+---
+title: file-system
+description: file-system
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Configuring file system'}
+ - !run: {exe: 'fsutil', args: 'behavior set disabledeletenotify 0', showOutput: false}
+ - !run: {exe: 'fsutil', args: 'behavior set disablecompression 1', showOutput: false}
+ - !run: {exe: 'fsutil', args: 'behavior set encryptpagingfile 0', showOutput: false}
+ - !run: {exe: 'fsutil', args: 'behavior set disablewriteautotiering 1', showOutput: false}
+ - !run: {exe: 'fsutil', args: 'behavior set disablelastaccess 1', showOutput: false}
+ - !run: {exe: 'fsutil', args: 'behavior set quotanotify 5400', showOutput: false}
+ - !run: {exe: 'fsutil', args: 'behavior set disable8dot3', showOutput: false}
+  

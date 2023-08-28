@@ -1,0 +1,7 @@
+---
+title: fault-tolerant-heap
+description: fault-tolerant-heap
+privilege: TrustedInstaller
+actions:
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\FTH', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\FTH\State'}

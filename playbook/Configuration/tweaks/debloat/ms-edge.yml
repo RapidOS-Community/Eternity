@@ -1,0 +1,110 @@
+---
+title: ms-edge
+description: ms-edge
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Removing Microsoft Edge', option: "msedge-delete"}
+ - !taskKill: {name: 'MicrosoftEdgeUpdate', option: "msedge-delete"}
+ - !taskKill: {name: 'msedge', option: "msedge-delete"}
+ - !taskKill: {name: 'MicrosoftEdge*', option: "msedge-delete"}
+ - !taskKill: {name: 'setup', pathContains: '\Edge', option: "msedge-delete"}
+ - !taskKill: {name: 'msedgewebview2', option: "msedge-delete"}
+ - !service: {name: 'edgeupdate', operation: delete, option: "msedge-delete"}
+ - !service: {name: 'edgeupdatem', operation: delete, option: "msedge-delete"}
+ - !service: {name: 'MicrosoftEdgeElevationService', operation: delete, option: "msedge-delete"}
+
+ - !file: {path: 'C:\Users\Public\Desktop\Microsoft Edge.lnk', option: "msedge-delete"}
+ - !file: {path: 'C:\ProgramData\Microsoft\EdgeUpdate', option: "msedge-delete"}
+ - !file: {path: 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk', option: "msedge-delete"}
+
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMigratedBrowserPin', operation: delete}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\CLSID\{1FCBE96C-1697-43AF-9140-2897C7C69767}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\AppID\{1FCBE96C-1697-43AF-9140-2897C7C69767}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\Interface\{C9C2B807-7731-4F34-81B7-44FF7779522B}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\TypeLib\{C9C2B807-7731-4F34-81B7-44FF7779522B}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\MSEdgeHTM', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\MSEdgePDF', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\MSEdgeMHT', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\AppID\{628ACE20-B77A-456F-A88D-547DB6CEEDD5}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Clients\StartMenuInternet\Microsoft Edge', option: "msedge-delete"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\RegisteredApplications', value: 'Microsoft Edge', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe', option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.htm\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.html\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.shtml\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.svg\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.xht\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.xhtml\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.webp\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.xml\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts', value: 'MSEdgeHTM_microsoft-edge', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\EnterpriseMode', value: 'MSEdgePath', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\AppID\ie_to_edge_bho.dll', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\AppID\{31575964-95F7-414B-85E4-0E9A93699E13}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\CLSID\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\WOW6432Node\CLSID\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\ie_to_edge_bho.IEToEdgeBHO', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\ie_to_edge_bho.IEToEdgeBHO.1', option: "msedge-delete"}
+
+   # Internet Explorer
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\EnterpriseMode', value: 'MSEdgePath', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\{c9abcf16-8dc2-4a95-bae3-24fd98f2ed29}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\{c9abcf16-8dc2-4a95-bae3-24fd98f2ed29}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Internet Explorer\ProtocolExecute\microsoft-edge', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Internet Explorer\ProtocolExecute\microsoft-edge', option: "msedge-delete"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Internet Explorer\EdgeIntegration\AdapterLocations\C:\Program Files (x86)\Microsoft\Edge', value: 'Application', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Ext\PreApproved\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}', option: "msedge-delete"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Ext\CLSID', value: '{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Edge', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Edge', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\CLSID\{3A84F9C2-6164-485C-A7D9-4B27F8AC009E}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCR\WOW6432Node\CLSID\{3A84F9C2-6164-485C-A7D9-4B27F8AC009E}', option: "msedge-delete"}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PreviewHandlers', value: '{3A84F9C2-6164-485C-A7D9-4B27F8AC009E}', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCR\.pdf\ShellEx\{8895b1c6-b41f-4c1c-a562-0d564250836f}', value: '(Default)', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKU\S-1-5-21-3476428458-2503407758-626446112-1002\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\EventLog\Application\Edge', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\MediaPlayer\ShimInclusionList\msedge.exe', option: "msedge-delete"}
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update', option: "msedge-delete"}
+
+   # WebView
+ - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView', option: "msedge-delete"}
+
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'Microsoft Edge Update', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\RegisteredApplications', value: 'Microsoft Edge', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.htm\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.html\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.shtml\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.svg\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.xht\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.xhtml\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.webp\OpenWithProgids', value: 'MSEdgeHTM', operation: delete, option: "msedge-delete"}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts', value: 'MSEdgeHTM_microsoft-edge', operation: delete, option: "msedge-delete"}
+ - !registryKey: {path: 'HKCU\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}', option: "msedge-delete"}
+ - !registryKey: {path: 'HKCU\SOFTWARE\Microsoft\Edge', option: "msedge-delete"}
+
+ - !registryKey: {path: 'HKCU\SOFTWARE\Microsoft\EdgeWebView', option: "msedge-delete"}
+
+ - !file: {path: 'C:\Program Files (x86)\Microsoft\Edge', weight: 10, option: "msedge-delete"}
+ - !file: {path: 'C:\Program Files (x86)\Microsoft\EdgeUpdate', weight: 10, option: "msedge-delete"}
+ - !file: {path: 'C:\Program Files (x86)\Microsoft\EdgeCore', weight: 10, option: "msedge-delete"}
+ - !file: {path: 'C:\Program Files (x86)\Microsoft\EdgeWebView', weight: 10, option: "msedge-delete"}
+
+ - !run: {exeDir: true, exe: 'EDGE.bat', weight: 20, option: "msedge-delete"}
+
+   # AtlasOS
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-Angle', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-AXHost', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-EdgeContent', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-EdgeManager', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-MicrosoftEdgeBCHost', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-MicrosoftEdgeCP', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-MicrosoftEdgeDevTools', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-MicrosoftEdgeEnlightenment', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-MicrosoftEdgeEnlightenment', arch: wow64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-Edge-MicrosoftEdgeSH', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-MicrosoftEdgeDevToolsClient.AppxMain', arch: amd64, language: 'neutral', option: "msedge-delete"}
+ - !systemPackage: {name: 'Microsoft-Windows-MicrosoftEdgeDevToolsClient.AppxSetup', arch: amd64, language: 'neutral', option: "msedge-delete"}

@@ -1,0 +1,10 @@
+---
+title: wallpaper
+description: wallpaper
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Setting up wallpaper'}
+ - !run:
+   exeDir: true
+   exe: "WALLPAPER.bat"
+   weight: 120

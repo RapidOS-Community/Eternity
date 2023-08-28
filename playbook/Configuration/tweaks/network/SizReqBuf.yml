@@ -1,0 +1,11 @@
+---
+title: SizReqBuf
+description: SizReqBuf
+privilege: TrustedInstaller
+actions:
+   # Change SizReqBuf to 17424 bytes(default - 16384 bytes)
+ - !registryValue:
+   path: 'HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters'
+   value: 'SizReqBuf'
+   type: REG_DWORD
+   data: '17424'

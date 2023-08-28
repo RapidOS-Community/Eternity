@@ -1,0 +1,9 @@
+---
+title: power
+description: power
+privilege: TrustedInstaller
+actions:
+ - !run:
+   exeDir: true
+   exe: "POWER.bat"
+   weight: 70

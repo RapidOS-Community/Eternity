@@ -1,0 +1,15 @@
+---
+title: custom
+description: custom
+privilege: Admin
+actions: []
+features:
+ # Basic
+ - eternity\start.yml
+ - eternity\software.yml
+
+ # System
+ - eternity\appx.yml
+ - eternity\packages.yml
+ - eternity\services.yml
+ - tweaks.yml

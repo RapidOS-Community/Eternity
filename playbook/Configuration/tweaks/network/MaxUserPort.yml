@@ -1,0 +1,11 @@
+---
+title: MaxUserPort
+description: MaxUserPort
+privilege: TrustedInstaller
+actions:
+   # Change MaxUserPort to 65534 bytes(default - 5000 bytes)
+ - !registryValue:
+   path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters'
+   value: 'MaxUserPort'
+   type: REG_DWORD
+   data: '65534'

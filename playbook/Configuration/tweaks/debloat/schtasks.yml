@@ -1,0 +1,98 @@
+---
+title: schtasks
+description: schtasks
+privilege: TrustedInstaller
+actions:
+ - !scheduledTask: {path: '\Microsoft\Windows\ApplicationData\appuriverifierdaily', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\ApplicationData\appuriverifierinstall', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Application Experience\ProgramDataUpdater', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Application Experience\StartupAppTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Application Experience\PcaPatchDbTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\AppID\EDP Policy Manager', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Autochk\Proxy', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Customer Experience Improvement Program\Consolidator', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\CloudExperienceHost\CreateObjectTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Device Information\Device', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Diagnosis\Scheduled', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\DiskFootprint\Diagnostics', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\DiskFootprint\StorageSense', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Defrag\ScheduledDefrag', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\DiskCleanup\SilentCleanup', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Device Setup\Metadata Refresh', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\ErrorDetails\EnableErrorDetailsUpdate', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Feedback\Siuf\DmClient', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\InstallService\ScanForUpdates', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\InstallService\ScanForUpdatesAsUser', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\InstallService\SmartRetry', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Maintenance\WinSAT', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Mobile Broadband Accounts\MNO Metadata Parser', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Multimedia\Microsoft\Windows\Multimedia', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Maps\MapsUpdateTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Maps\MapsToastTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\NetTrace\GatherNetworkInfo', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64 Critical', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 Critical', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\PI\Sqm-Tasks', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\PushToInstall\LoginCheck', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\PushToInstall\Registration', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\RetailDemo\CleanupOfflineContent', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Ras\MobilityManager', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Registry\RegIdleBackup', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Shell\IndexerAutomaticMaintenance', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTaskNetwork', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTaskLogon', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\StateRepository\MaintenanceTasks', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Shell\FamilySafetyMonitor', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Setup\SetupCleanupTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Speech\SpeechModelDownloadTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Time Synchronization\ForceSynchronizeTime', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Time Synchronization\SynchronizeTime', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Time Zone\SynchronizeTimeZone', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\UpdateOrchestrator\Report policies', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\UpdateOrchestrator\UpdateModelTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\UpdateOrchestrator\USO_UxBroker', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\UpdateOrchestrator\Schedule Work', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\UPnP\UPnPHostConfig', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\WindowsUpdate\Scheduled Start', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\WaaSMedic\PerformRemediation', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Wininet\CacheTask', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Windows Error Reporting\QueueReporting', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Windows Filtering Platform\BfeOnServiceStartTypeChange', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Windows\Work Folders\Work Folders Logon Synchronization', operation: delete}
+
+ - !scheduledTask: {path: '\Microsoft\Office\Office ClickToRun Service Monitor', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetry\AgentFallBack2016', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetry\AgentFallBack2016', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetry\OfficeTelemetryAgentLogOn2016', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetryAgentFallBack2016', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetryAgentLogOn2016', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetryAgentFallBack', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\OfficeTelemetryAgentLogOn', operation: delete}
+ - !scheduledTask: {path: '\Microsoft\Office\Office 15 Subscription Heartbeat', operation: delete}
+
+ - !scheduledTask: {path: 'NvTmMon_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}', operation: delete}
+ - !scheduledTask: {path: 'NvTmRep_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}', operation: delete}
+ - !scheduledTask: {path: 'NvTmRepOnLogon_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}', operation: delete}
+
+
+
+
+
+
+
+
+
