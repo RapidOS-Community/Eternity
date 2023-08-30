@@ -7,7 +7,8 @@ actions:
    # Enable Services
  - !service: {name: 'SecurityHealthService', operation: change, startup: 2, option: "enable-def"}
  - !service: {name: 'SgrmAgent', operation: change, startup: 2, option: "enable-def"} 
- - !service: {name: 'SgrmBroker', operation: change, startup: 2, option: "enable-def"} 
+ - !service: {name: 'SgrmBroker', operation: change, startup: 2, option: "enable-def"}
+ - !service: {name: 'mpssvc', operation: change, startup: 2, option: "enable-def"} 
  - !service: {name: 'MsSecFlt', operation: change, startup: 2, option: "enable-def"}
  - !service: {name: 'Sense', operation: change, startup: 2, option: "enable-def"}
  - !service: {name: 'WdBoot', operation: change, startup: 2, option: "enable-def"}
@@ -17,17 +18,12 @@ actions:
  - !service: {name: 'WinDefend', operation: change, startup: 2, option: "enable-def"}
  - !service: {name: 'wscsvc', operation: change, startup: 2, option: "enable-def"}
 
-   # Enable SmartScreen
- - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'SmartScreenEnabled', type: REG_SZ, data: 'On', option: "enable-def"}
- - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'EnableSmartScreen', type: REG_DWORD, data: '1', option: "enable-def"}
- - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControl', type: REG_DWORD, data: '1', option: "enable-def"}
- - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControlEnabled', type: REG_DWORD, data: '1', option: "enable-def"}
-
  - !writeStatus: {status: 'Disabling Windows Defender', option: "disable-def"}
    # Disable Services
  - !service: {name: 'SecurityHealthService', operation: change, startup: 4, option: "disable-def"}
  - !service: {name: 'SgrmAgent', operation: change, startup: 4, option: "disable-def"} 
- - !service: {name: 'SgrmBroker', operation: change, startup: 4, option: "disable-def"} 
+ - !service: {name: 'SgrmBroker', operation: change, startup: 4, option: "disable-def"}
+ - !service: {name: 'mpssvc', operation: change, startup: 4, option: "disable-def"} 
  - !service: {name: 'MsSecFlt', operation: change, startup: 4, option: "disable-def"}
  - !service: {name: 'Sense', operation: change, startup: 4, option: "disable-def"}
  - !service: {name: 'WdBoot', operation: change, startup: 4, option: "disable-def"}
@@ -36,15 +32,6 @@ actions:
  - !service: {name: 'WdNisSvc', operation: change, startup: 4, option: "disable-def"}
  - !service: {name: 'WinDefend', operation: change, startup: 4, option: "disable-def"}
  - !service: {name: 'wscsvc', operation: change, startup: 4, option: "disable-def"}
-
-   # Disable SmartScreen
- - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'SmartScreenEnabled', type: REG_SZ, data: 'Off', option: "disable-def"}
- - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'EnableSmartScreen', type: REG_DWORD, data: '0', option: "disable-def"}
- - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControl', type: REG_DWORD, data: '0', option: "disable-def"}
- - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen', value: 'ConfigureAppInstallControlEnabled', type: REG_DWORD, data: '0', option: "disable-def"}
-  
-   # Remove SecurityHealthSystray startup item
- - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'SecurityHealth', operation: delete}
 
  - !writeStatus: {status: 'Removing Windows Defender', option: "remove-def"}
    # If you remove Windows Defender you could not recover it
@@ -70,6 +57,9 @@ actions:
  - !file: {path: 'C:\Windows\System32\drivers\WdNisDrv.sys', option: "remove-def"}
  - !file: {path: 'C:\Program Files\Windows Defender Advanced Threat Protection', option: "remove-def"}
  - !file: {path: 'C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection', option: "remove-def"}
+
+   # Remove SecurityHealthSystray startup item
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'SecurityHealth', operation: delete}
 
    # AtlasOS
    # Windows Defender

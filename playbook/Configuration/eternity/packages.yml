@@ -3,7 +3,7 @@ title: packages
 description: packages
 privilege: TrustedInstaller
 actions:
-  # AtlasOS
+   ## AtlasOS
  - !writeStatus: {status: 'Removing system packages'}
    # OOBE
  - !systemPackage: {name: 'Microsoft-Windows-OOBENetworkCaptivePortal.AppxMain', arch: amd64, language: 'neutral'}

@@ -55,7 +55,7 @@ actions:
  - !appx: {name: '*MixedReality.Portal*', type: family}
  - !appx: {name: '*Spotify*', type: family}
  - !appx: {name: '*SecureAssessmentBrowser*', type: family}
- - !appx: {name: '*A025C540.Yandex.Music*', type: app}
+ # - !appx: {name: '*A025C540.Yandex.Music*', type: app}
  - !appx: {name: '*WebExperienceHost*', type: app}
 
  - !appx: {name: '*Client.CBS*', operation: clearCache, option: "ui"}
