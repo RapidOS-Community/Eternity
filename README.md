@@ -1,5 +1,7 @@
 # EternityOS
 
+<h1 align="center">Meet Eternity Project</a> 
+
 Our system was created by enthusiasts from Belarus who are constantly improving their knowledge in this area! The system can be used in any area. It is ideally optimized for any task. The system is ideal for both programmers and gamers!
 
 The qualities of our product that we can be proud of.
