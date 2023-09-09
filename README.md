@@ -1,7 +1,8 @@
 # EternityOS Playbook
 Our system was created by enthusiasts from Belarus who are constantly improving their knowledge in this area! The system can be used in any area. It is ideally optimized for any task. The system is ideal for both programmers and gamers!
 
-## Why EternityOS?:
+The qualities of our product that we can be proud of:
+
 ## 🔒 Privacy:
 Our system does not send a report on your activities to Microsoft, saving your data.
 During installation, you will be offered only the most confidential browsers. Browsers are pre-optimized and fully ready to work.
