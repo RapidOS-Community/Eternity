@@ -7,5 +7,5 @@ actions:
  - !run:
    exeDir: true
    exe: "FINALIZE.bat"
-   weight: 200
+   weight: 100
  - !run: {baseDir: true, exe: "NSudoLC.exe", args: '-U:C -UseCurrentConsole explorer.exe'}

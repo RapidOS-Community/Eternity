@@ -199,7 +199,7 @@ actions:
    option: "browser-chrome"
 
 
- - !writeStatus: {status: 'Installing .NET Framework 3.5', option: "net"}
+ - !writeStatus: {status: 'Installing .NET 3.5', option: "net"}
  - !cmd:
    command: '"%ProgramData%\chocolatey\bin\choco.exe" install -y --force --allow-empty-checksums dotnet3.5'
    weight: 70

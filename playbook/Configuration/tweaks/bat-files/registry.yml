@@ -1,0 +1,10 @@
+---
+title: registry
+description: This file starts REGI.bat that applies Visual Effects parameters, MSI Mode, disables DMA Remapping and MS Edge autorun.
+privilege: TrustedInstaller
+actions:
+ - !writeStatus: {status: 'Modifying registry'}
+ - !run:
+   exeDir: true
+   exe: "REGI.bat"
+   weight: 200
