@@ -1,17 +1,21 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+:: Copying EternityOS files.
+xcopy /e /y /i "EternityResources\Eternity" "%WinDir%\Eternity"
+xcopy /e /y /i "EternityResources\System32" "%WinDir%"
+
 for /f "tokens=2 delims==" %%a in ('wmic os get TotalVisibleMemorySize /format:value') do set "memTemp=%%a"
 set /a "mem=%memTemp% + 1024000"
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "%mem%" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" /v "AllowInputPersonalization" /t REG_DWORD /d "0" /f
 
-:: Setting up Visual Effects parameters.
 for /f "usebackq tokens=2 delims=\" %%a in (`reg query "HKEY_USERS" ^| findstr /r /x /c:"HKEY_USERS\\S-.*" /c:"HKEY_USERS\\AME_UserHive_[^_]*"`) do (
 :: If the "Volatile Environment" key exists, that means it is a proper user. Built in accounts/SIDs do not have this key.
   reg query "HKEY_USERS\%%a" | findstr /c:"Volatile Environment" /c:"AME_UserHive_"
     if not errorlevel 1 (
       if %memTemp% lss 8000000 (
+        :: Setting up Visual Effects parameters.
         reg add "HKU\%%a\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "3" /f
         reg add "HKU\%%a\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "IconsOnly" /t REG_DWORD /d "0" /f
         reg add "HKU\%%a\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect" /t REG_DWORD /d "0" /f
@@ -32,6 +36,13 @@ for /f "usebackq tokens=2 delims=\" %%a in (`reg query "HKEY_USERS" ^| findstr /
         reg add "HKU\%%a\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9012038010000000" /f
         reg add "HKU\%%a\Control Panel\Desktop" /v "FontSmoothing" /t REG_SZ /d "2" /f
         reg add "HKU\%%a\Control Panel\Desktop" /v "DragFullWindows" /t REG_SZ /d "1" /f
+ 
+        :: Adding Game Boost in context menu.
+        reg add "HKCR\Directory\Background\shell\01_Game" /v "HasLUAShield" /t REG_SZ /d "" /f
+        reg add "HKCR\Directory\Background\shell\01_Game" /v "MUIVerb" /t REG_SZ /d "Game Boost" /f
+        reg add "HKCR\Directory\Background\shell\01_Game" /v "Position" /t REG_SZ /d "Middle" /f
+        reg add "HKCR\Directory\Background\shell\01_Game" /v "Icon" /t REG_EXPAND_SZ /d "%%SystemRoot%%\Eternity\GameBoost\game-boost.ico" /f
+        reg add "HKCR\Directory\Background\shell\01_Game\command" /ve /t REG_EXPAND_SZ /d "WScript.exe %%SystemRoot%%\Eternity\GameBoost\1.vbs" /f
       )
     )
   )
