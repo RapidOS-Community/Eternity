@@ -69,6 +69,7 @@ features:
  - tweaks\security\win-defender.yml
 
  # Bat files that start files in 'Executables'
+ - tweaks\bat-files\registry.yml
  - tweaks\bat-files\startmenu.yml
  - tweaks\bat-files\wallpaper.yml
  - tweaks\bat-files\finalize.yml
