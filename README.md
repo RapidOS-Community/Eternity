@@ -3,19 +3,19 @@ Welcome to EternityOS, a sanctuary of digital freedom and unparalleled performan
 
 **The qualities of our product that we can be proud of:**
 
-##🔒 Privacy:
+## 🔒 Privacy:
 Data Guardians: Our system refrains from sending activity reports to corporations, safeguarding your data from prying eyes.
 Incognito Browsing: Enjoy access to confidential browsers, pre-optimized and ready to shield your online presence.
 Telemetry Purge: Say farewell to user-tracking telemetry, enhancing your privacy while boosting system productivity.
 Surveillance-Free: Rest easy knowing your every move is your own, free from surveillance and data leakage.
 
-##📀 Stability:
+## 📀 Stability:
  - Seamless Integration: EternityOS flawlessly supports a myriad of modern programs, including Microsoft Store and Xbox Game Bar.
  - Rigorous Testing: Our system mirrors, or even surpasses, the stability of native Microsoft OS, guaranteeing reliability in every operation.
  - Antivirus Control: Update 1.4 introduces the ability to enable and disable antivirus software, enhancing your system's security arsenal.
  - Reliability Unleashed: Experience uninterrupted workflow and gaming, underpinned by robust stability measures.
 
-##🚀 Performance:
+## 🚀 Performance:
 Telemetry Elimination: Bid farewell to hindering telemetry, boosting system speed and responsiveness.
 Gaming Nirvana: Witness remarkable reductions in input delay and lag, transforming your gaming sessions into seamless adventures.
 Optimized for All: Low-end PCs rejoice, as EternityOS brings unparalleled performance gains, ensuring smooth operation on every device.
