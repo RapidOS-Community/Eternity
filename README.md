@@ -1,7 +1,9 @@
 # EternityOS Playbook
-# Project is discarded
+# Project is discarded Moved in https://github.com/rapid-community/RapidOS
 Welcome to EternityOS, a sanctuary of digital freedom and unparalleled performance, crafted by dedicated enthusiasts from Belarus. Dive into the world where privacy, stability, and performance take center stage, ensuring an exceptional computing experience tailored just for you.
-#
+
+
+
 **The qualities of our product that we can be proud of:**
 
 ## 🔒 Privacy:
